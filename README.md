@@ -947,136 +947,245 @@ with 문을 사용해 자원을 안전하게 관리하는 것을 목표로 했�
 
 ---
 
-## 예외 처리 (Exception)
+# ✅ Chapter 3. 기본 문법
 
-### 예외란?
+## 3. 제어 흐름 (Control Flow and Iterables)
 
-예외(Exception)는 프로그램 실행 중 발생하는 오류로,
-정상적인 흐름을 방해하는 사건을 의미합니다.
+# 🧠 3.7. 예외(Exception) 처리
 
-예외 처리를 하지 않으면 프로그램은 즉시 종료되지만,
-예외 처리를 통해 오류 상황을 안전하게 넘기거나 복구할 수 있습니다.
+프로그램을 개발하다 보면 문법적으로는 완벽하지만,
+실행 중 **예상치 못한 상황**(잘못된 입력, 네트워크 오류, 파일 부재 등)으로 인해
+프로그램이 중단되는 경우가 발생합니다.
 
-### 예외 처리의 필요성
-
-* 잘못된 사용자 입력
-* 파일이 존재하지 않는 경우
-* 네트워크 또는 서버 오류
-* 계산 중 발생하는 오류
+이러한 상황을 **예외(Exception)** 라고 하며,
+이를 안전하게 처리하는 작업을 **예외 처리(Exception Handling)** 라고 합니다.
 
 ---
 
-## 예외 처리 기본 문법 (try / except)
+## ✅ 1/7 예외 처리 기본 개념
+
+예를 들어 로그인 과정에서 서버 응답이 없다면 다음과 같은 고민이 필요합니다.
+
+* 얼마나 기다려야 하는가?
+* 사용자에게 무엇을 안내해야 하는가?
+* 프로그램을 종료할 것인가, 다시 시도할 것인가?
+
+이처럼 **비정상 상황에 대비하는 로직**이 바로 예외 처리입니다.
+
+---
+
+## 3.7.1 예외(Exception)란?
+
+예외란 프로그램 실행 중 정상적인 흐름을 방해하는 사건입니다.
+
+* 예외 처리를 하지 않으면 → 프로그램 즉시 종료 (Crash)
+* 예외 처리를 하면 → 오류를 우아하게 처리하거나 복구 가능
+
+---
+
+## 3.7.2 Python 예외 처리 기본 문법
 
 ```python
 try:
-    # 에러가 발생할 가능성이 있는 코드
+    # 실행하고 싶은 코드 (에러 가능 구간)
 except 예외종류:
-    # 에러 발생 시 실행할 코드
+    # 예외 발생 시 실행 코드
 else:
-    # 에러가 발생하지 않았을 때 실행 (선택)
+    # 예외가 발생하지 않았을 때 실행 (선택)
 finally:
-    # 항상 실행되는 코드 (선택)
-예외 처리 예제 + raise
-python
-코드 복사
+    # 예외 발생 여부와 관계없이 항상 실행 (선택)
+```
+
+---
+
+## ✅ 2/7 예외 처리 예제 + raise
+
+```python
 try:
     raise IndexError("this is an index error")
-
 except IndexError as e:
     pass
-
 except (TypeError, NameError):
     pass
-
 else:
     print("All good!")
-
 finally:
     print("We can clean up resources here")
-as e 의미
-발생한 예외 객체를 변수 e에 저장
+```
 
-예외 메시지 확인 가능
+### 🔹 raise
 
-변수 이름은 자유롭게 변경 가능
+* 의도적으로 예외를 발생시킬 때 사용
 
-IndexError 예제
-python
-코드 복사
-nums = [1, 2, 3, 4, 5]
-print(nums[5])   # IndexError 발생
-text
-코드 복사
-IndexError: list index out of range
-주요 예외 종류 정리
-카테고리	예외 이름	발생 상황
-값/타입	TypeError	잘못된 타입 연산
-값/타입	ValueError	값이 부적절
-참조	NameError	변수 이름 오류
-참조	AttributeError	존재하지 않는 속성
-인덱스	IndexError	범위 초과 인덱스
-인덱스	KeyError	딕셔너리 키 없음
-입출력	FileNotFoundError	파일 없음
-입출력	PermissionError	권한 부족
-수학	ZeroDivisionError	0으로 나눔
+### 🔹 as e 의미
 
-0으로 나누기 예외 처리
-python
-코드 복사
-m, n = map(int, input().split())
+* 발생한 예외 객체를 변수(e)에 저장
+* e 대신 err, error 등 다른 이름 사용 가능
+
+---
+
+## ✅ 3/7 IndexError 예시 + 예외 카테고리
+
+```python
+lockers = ["노트북", "책", "우산"]
 
 try:
-    print(f"{m} / {n} = {m / n}")
-except ZeroDivisionError:
-    print("0으로 나눌 수 없습니다.")
-파일 처리 기본 방식
-python
-코드 복사
-f = open("data.txt")
+    item = lockers[5]
+except IndexError as e:
+    print("⚠️ 문제가 발생했습니다!")
+    print(f"에러 메시지 내용: {e}")
+```
 
+출력 결과:
+
+```
+⚠️ 문제가 발생했습니다!
+에러 메시지 내용: list index out of range
+```
+
+> `as e`를 사용하지 않으면 상세 에러 메시지를 확인할 수 없음
+
+---
+
+### 📌 주요 예외 카테고리
+
+| 카테고리 | 예외 이름             | 발생 상황          |
+| ---- | ----------------- | -------------- |
+| 값/타입 | TypeError         | 잘못된 타입 연산      |
+| 값/타입 | ValueError        | 타입은 맞으나 값이 부적절 |
+| 참조   | NameError         | 변수 이름 없음       |
+| 참조   | AttributeError    | 객체에 없는 속성 호출   |
+| 인덱스  | IndexError        | 범위 초과 접근       |
+| 인덱스  | KeyError          | 딕셔너리 키 없음      |
+| 입출력  | FileNotFoundError | 파일 없음          |
+| 입출력  | PermissionError   | 파일 권한 없음       |
+
+---
+
+## ✅ 4/7 파일 처리 기본 방식 vs with
+
+### 일반적인 파일 처리 방식
+
+```python
+f = open("data.txt")
 try:
     content = f.read()
 finally:
     f.close()
-파일 사용이 끝나면 반드시 close()를 호출해야 합니다.
+```
 
-with 문을 사용한 파일 처리
-python
-코드 복사
+⚠️ close()를 깜빡하기 쉬움
+
+---
+
+### with 사용 (권장)
+
+```python
 with open("myfile.txt") as f:
     for line in f:
         print(line)
-with 문의 특징
-블록이 끝나면 자동으로 파일 종료
+```
 
-예외 발생 시에도 안전
+#### 특징
 
-파일, 데이터베이스, lock 등에 사용 가능
+* 블록 종료 시 자동 close()
+* 오류 발생해도 안전하게 종료
 
-JSON 처리
-JSON과 Python 타입 변환
-JSON 타입	Python 타입
-object	dict
-array	list
-string	str
-number	int / float
-true / false	True / False
-null	None
+---
 
-JSON 파일 읽기
-python
-코드 복사
+## ✅ 5/7 추가 예외 + 0으로 나누기
+
+### 주요 예외 추가
+
+| 카테고리 | 예외 이름               | 발생 상황     |
+| ---- | ------------------- | --------- |
+| 수학   | ZeroDivisionError   | 0으로 나누기   |
+| 수학   | OverflowError       | 너무 큰 수    |
+| 모듈   | ImportError         | import 실패 |
+| 모듈   | ModuleNotFoundError | 모듈 없음     |
+
+### Practice: 0으로 나누기 처리
+
+```python
+try:
+    m, n = map(int, input().split())
+    print(f"{m} / {n} = {m / n}")
+except ZeroDivisionError:
+    print("0으로 나눌 수 없습니다.")
+```
+
+---
+
+## 3.7.3 with 문장과 자원 관리
+
+자원(Resource)이란 운영체제가 관리하는 데이터입니다.
+
+* 파일
+* 데이터베이스
+* 네트워크
+
+`with` 문은 자원을 **자동으로 정리(cleanup)** 해줍니다.
+
+---
+
+## ✅ 6/7 JSON 타입과 파일 읽기
+
+### JSON ↔ Python 타입
+
+| JSON         | Python       |
+| ------------ | ------------ |
+| string       | str          |
+| number       | int / float  |
+| true / false | True / False |
+| null         | None         |
+
+```python
+with open("myfile2.txt", "r") as file:
+    contents = json.load(file)
+    print(contents)
+```
+
+---
+
+## ✅ 7/7 with로 파일 쓰기 + JSON
+
+```python
+contents = {"aa": 12, "bb": 21}
+
+with open("myfile1.txt", "w") as file:
+    file.write(str(contents))
+
 import json
+with open("myfile2.txt", "w") as file:
+    file.write(json.dumps(contents))
+```
 
-with open("myfile.json", "r") as file:
-    data = json.load(file)
-JSON 파일 쓰기
-python
-코드 복사
-import json
+### 💡 JSON이란?
 
-data = {"aa": 12, "bb": 21}
+JSON(JavaScript Object Notation)은
+사람과 컴퓨터 모두 읽기 쉬운 데이터 표현 형식입니다.
 
-with open("myfile.json", "w") as file:
-    file.write(json.dumps(data))
+```json
+{
+  "name": "Sungyong",
+  "age": 15,
+  "likes": ["game", "coding"]
+}
+```
+
+### JSON → Python 변환 규칙
+
+| JSON      | Python |
+| --------- | ------ |
+| object {} | dict   |
+| array []  | list   |
+
+---
+
+## ✨ 마무리
+
+이 문서는 **파이썬 예외 처리의 핵심 개념부터 파일·JSON 처리까지**를 정리한 학습 기록입니다.
+
+안정적인 프로그램을 만들기 위한 기반 문법으로,
+향후 로봇 제어, 서버 통신, 데이터 처리 프로젝트로 확장할 수 있습니다.
+
