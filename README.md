@@ -932,3 +932,151 @@ else:
 
 앞으로 조건문·반복문과 결합된 더 복잡한 계산 문제와
 실제 하드웨어 제어 프로젝트로 확장할 계획입니다.
+
+
+# python-basic
+
+## 목적
+
+프로그램 실행 중 발생할 수 있는 오류 상황을 이해하고,
+Python의 예외 처리와 파일/JSON 처리 방법을 학습하기 위해
+기본 개념과 예제를 정리한 학습 기록입니다.
+
+예외(Exception)를 통해 프로그램이 중단되지 않도록 처리하고,
+with 문을 사용해 자원을 안전하게 관리하는 것을 목표로 했습니다.
+
+---
+
+## 예외 처리 (Exception)
+
+### 예외란?
+
+예외(Exception)는 프로그램 실행 중 발생하는 오류로,
+정상적인 흐름을 방해하는 사건을 의미합니다.
+
+예외 처리를 하지 않으면 프로그램은 즉시 종료되지만,
+예외 처리를 통해 오류 상황을 안전하게 넘기거나 복구할 수 있습니다.
+
+### 예외 처리의 필요성
+
+* 잘못된 사용자 입력
+* 파일이 존재하지 않는 경우
+* 네트워크 또는 서버 오류
+* 계산 중 발생하는 오류
+
+---
+
+## 예외 처리 기본 문법 (try / except)
+
+```python
+try:
+    # 에러가 발생할 가능성이 있는 코드
+except 예외종류:
+    # 에러 발생 시 실행할 코드
+else:
+    # 에러가 발생하지 않았을 때 실행 (선택)
+finally:
+    # 항상 실행되는 코드 (선택)
+예외 처리 예제 + raise
+python
+코드 복사
+try:
+    raise IndexError("this is an index error")
+
+except IndexError as e:
+    pass
+
+except (TypeError, NameError):
+    pass
+
+else:
+    print("All good!")
+
+finally:
+    print("We can clean up resources here")
+as e 의미
+발생한 예외 객체를 변수 e에 저장
+
+예외 메시지 확인 가능
+
+변수 이름은 자유롭게 변경 가능
+
+IndexError 예제
+python
+코드 복사
+nums = [1, 2, 3, 4, 5]
+print(nums[5])   # IndexError 발생
+text
+코드 복사
+IndexError: list index out of range
+주요 예외 종류 정리
+카테고리	예외 이름	발생 상황
+값/타입	TypeError	잘못된 타입 연산
+값/타입	ValueError	값이 부적절
+참조	NameError	변수 이름 오류
+참조	AttributeError	존재하지 않는 속성
+인덱스	IndexError	범위 초과 인덱스
+인덱스	KeyError	딕셔너리 키 없음
+입출력	FileNotFoundError	파일 없음
+입출력	PermissionError	권한 부족
+수학	ZeroDivisionError	0으로 나눔
+
+0으로 나누기 예외 처리
+python
+코드 복사
+m, n = map(int, input().split())
+
+try:
+    print(f"{m} / {n} = {m / n}")
+except ZeroDivisionError:
+    print("0으로 나눌 수 없습니다.")
+파일 처리 기본 방식
+python
+코드 복사
+f = open("data.txt")
+
+try:
+    content = f.read()
+finally:
+    f.close()
+파일 사용이 끝나면 반드시 close()를 호출해야 합니다.
+
+with 문을 사용한 파일 처리
+python
+코드 복사
+with open("myfile.txt") as f:
+    for line in f:
+        print(line)
+with 문의 특징
+블록이 끝나면 자동으로 파일 종료
+
+예외 발생 시에도 안전
+
+파일, 데이터베이스, lock 등에 사용 가능
+
+JSON 처리
+JSON과 Python 타입 변환
+JSON 타입	Python 타입
+object	dict
+array	list
+string	str
+number	int / float
+true / false	True / False
+null	None
+
+JSON 파일 읽기
+python
+코드 복사
+import json
+
+with open("myfile.json", "r") as file:
+    data = json.load(file)
+JSON 파일 쓰기
+python
+코드 복사
+import json
+
+data = {"aa": 12, "bb": 21}
+
+with open("myfile.json", "w") as file:
+    file.write(json.dumps(data))
