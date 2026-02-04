@@ -1,4 +1,4 @@
-         # python-basic
+          # python-basic
 고등학교 입학 전 파이썬 기초 문법을 정리하며 학습한 내용입니다.  
 변수, 조건문, 반복문, 함수 등 기본적인 개념을 이해하는 것을 목표로 합니다.
 # 조건문과 반복문 연습
@@ -1722,7 +1722,7 @@ list(map(add_10, [1, 2, 3]))
 list(map(max, [1, 2, 3], [4, 2, 1]))
 # [4, 2, 3]
 
-```python
+---
 ### 2️⃣ filter(function, iterable)
 조건을 만족하는 요소만 추출하는 함수입니다.
 
@@ -1732,7 +1732,7 @@ evens = list(filter(lambda x: x % 2 == 0, numbers))
 ➡ 함수의 반환값이 True인 요소만 남고,
 False인 요소는 제거됩니다.
 
-```python
+---
 ### 3️⃣ reduce(function, iterable)
 functools 모듈에서 제공되며,
 여러 값을 누적 계산하여 하나의 값으로 축약하는 함수입니다.
@@ -1748,7 +1748,7 @@ total = reduce(lambda x, y: x + y, numbers)
 
 이후에는 이전 계산 결과와 다음 값이 반복적으로 전달됩니다.
 
-```python
+---
 ### 4️⃣ sorted(iterable, key=func)
 정렬 기준을 함수로 지정할 수 있는 정렬 함수입니다.
 
@@ -1757,7 +1757,7 @@ sorted(words, key=len)
 # ['kiwi', 'apple', 'banana']
 ➡ 문자열의 길이가 짧은 것부터 정렬됩니다.
 
-```python
+---
 ### 5️⃣ max(iterable, key=func) / min(iterable, key=func)
 함수를 기준으로 최댓값 또는 최솟값을 찾는 함수입니다.
 
