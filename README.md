@@ -1692,3 +1692,88 @@ def total(*args):
 앞으로는 이 개념들을 실제 프로젝트와 문제 풀이에 적용하며  
 더 효율적이고 구조적인 코드를 작성해 나갈 예정입니다.
 
+
+
+## 🔁 내장 고차 함수 (Built-in Higher Order Functions)
+
+### 📌 고차 함수란?
+
+고차 함수(Higher-Order Function)란  
+**함수를 매개변수로 받거나, 함수를 반환하는 함수**를 의미합니다.
+
+파이썬에서는 `map`, `filter`, `reduce`, `sorted` 등이  
+대표적인 내장 고차 함수입니다.
+
+---
+
+### 1️⃣ map(function, iterable)
+
+`iterable`의 각 요소에 함수를 적용하여  
+**새로운 값을 생성하는 함수**입니다.
+
+```python
+numbers = [1, 2, 3]
+result = list(map(lambda x: x * 2, numbers))
+# [2, 4, 6]
+list(map(add_10, [1, 2, 3]))
+# [11, 12, 13]
+list(map(max, [1, 2, 3], [4, 2, 1]))
+# [4, 2, 3]
+### 2️⃣ filter(function, iterable)
+조건을 만족하는 요소만 추출하는 함수입니다.
+
+numbers = [1, 2, 3, 4]
+evens = list(filter(lambda x: x % 2 == 0, numbers))
+# [2, 4]
+➡ 함수의 반환값이 True인 요소만 남고,
+False인 요소는 제거됩니다.
+
+### 3️⃣ reduce(function, iterable)
+functools 모듈에서 제공되며,
+여러 값을 누적 계산하여 하나의 값으로 축약하는 함수입니다.
+
+from functools import reduce
+
+numbers = [1, 2, 3, 4]
+total = reduce(lambda x, y: x + y, numbers)
+# 10
+📌 동작 방식
+
+처음에는 1과 2가 x, y로 전달됩니다.
+
+이후에는 이전 계산 결과와 다음 값이 반복적으로 전달됩니다.
+
+### 4️⃣ sorted(iterable, key=func)
+정렬 기준을 함수로 지정할 수 있는 정렬 함수입니다.
+
+words = ["apple", "kiwi", "banana"]
+sorted(words, key=len)
+# ['kiwi', 'apple', 'banana']
+➡ 문자열의 길이가 짧은 것부터 정렬됩니다.
+
+### 5️⃣ max(iterable, key=func) / min(iterable, key=func)
+함수를 기준으로 최댓값 또는 최솟값을 찾는 함수입니다.
+
+words = ["apple", "kiwi", "banana"]
+max(words, key=len)
+# 'banana'
+
+```
+
+---
+
+---
+
+### ✨ 마무리 | 내장 고차 함수
+
+내장 고차 함수는 파이썬에서 함수를 값처럼 다루는 사고 방식을 가장 잘 보여주는 기능입니다.
+map, filter, reduce, sorted, max, min 함수는
+반복문을 줄이고 코드의 의도를 명확하게 표현할 수 있도록 도와줍니다.
+
+이 개념을 이해함으로써
+데이터를 한 단계씩 가공하는 함수형 프로그래밍 스타일을 익힐 수 있으며,
+알고리즘 문제 풀이, 데이터 처리, 로봇 제어 로직과 같은 실제 문제에서도
+더 간결하고 효율적인 코드를 작성할 수 있습니다.
+
+앞으로는 상황에 맞는 고차 함수를 선택하여
+가독성과 유지보수성이 높은 파이썬 코드를 작성하는 것을 목표로 합니다.
