@@ -1517,6 +1517,7 @@ list(map(lambda x: x + 1, [1, 2, 3]))
 * 함수를 **매개변수로 받거나**
 * 함수를 **반환하는 함수**
 
+---
 ### 1️⃣ map(function, iterable)
 
 ```python
