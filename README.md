@@ -1842,3 +1842,111 @@ map, filter, reduce, sorted, max, min 함수는
 
 앞으로는 상황에 맞는 고차 함수를 선택하여
 가독성과 유지보수성이 높은 파이썬 코드를 작성하는 것을 목표로 합니다.
+
+
+🐍 python-basic
+📌 목적
+
+파이썬의 **기본 문법(입출력, 형변환, 연산자, 조건문)**을 이해하고 기초적인 문제 해결 능력을 기르는 것을 목표로 합니다.
+
+정수, 실수, 문자열 입력 처리와 논리 연산 및 조건 판단을 연습하여 프로그래밍의 핵심 사고력을 기릅니다.
+
+📘 BASIC Syntax Review
+✅ Question 01. 시분초 입력받아 분만 출력하기
+📌 문제 설명
+
+시, 분, 초가 "HH:MM:SS" 형식으로 입력된다.
+입력값에서 **분(MM)**만 추출하여 출력하시오.
+
+💻 해결 코드
+time = input()
+print(time.split(":")[1])
+✅ Question 02. 정수 1개 입력받아 부호 바꾸기
+💻 해결 코드
+n = int(input())
+print(-n)
+✅ Question 03. 문자 1개 입력받아 다음 문자 출력하기
+💻 해결 코드
+ch = input()
+print(chr(ord(ch) + 1))
+✅ Question 04. 단어 여러 번 출력하기
+💻 해결 코드
+word, n = input().split()
+print(word * int(n))
+✅ Question 05. 실수 2개 입력받아 거듭제곱 계산하기
+💻 해결 코드
+f1, f2 = map(float, input().split())
+print(f1 ** f2)
+✅ Question 06. 실수 1개 입력받아 소수점 이하 자리 변환하기
+💻 해결 코드
+f = float(input())
+print(f"{f:.2f}")
+✅ Question 07. 2의 거듭제곱 배로 곱해 출력하기
+💻 해결 코드
+a, b = map(int, input().split())
+print(a * (2 ** b))
+✅ Question 08. 정수 입력받아 참 거짓 평가하기
+💻 해결 코드
+n = int(input())
+print(bool(n))
+✅ Question 09. 참 거짓 바꾸기
+💻 해결 코드
+n = int(input())
+print(not bool(n))
+✅ Question 10. 둘 다 참일 경우만 참 출력하기
+💻 해결 코드
+a, b = map(int, input().split())
+print(bool(a) and bool(b))
+✅ Question 11. 하나라도 참이면 참 출력하기
+💻 해결 코드
+a, b = map(int, input().split())
+print(bool(a) or bool(b))
+✅ Question 12. 참/거짓이 서로 다를 때만 참 출력하기 (XOR)
+💻 해결 코드
+a, b = map(int, input().split())
+print(bool(a) != bool(b))
+✅ Question 13. 참/거짓이 서로 같을 때만 참 출력하기
+💻 해결 코드
+a, b = map(int, input().split())
+print(bool(a) == bool(b))
+✅ Question 14. 둘 다 거짓일 경우만 참 출력하기
+💻 해결 코드
+a, b = map(int, input().split())
+print(not bool(a) and not bool(b))
+✅ Question 15. n개의 정수를 입력받아 짝수만 출력하기
+💻 해결 코드
+numbers = list(map(int, input().split()))
+
+for n in numbers:
+    if n % 2 == 0:
+        print(n)
+✅ Question 16. 정수 3개 입력받아 짝/홀 출력하기
+💻 해결 코드
+numbers = list(map(int, input().split()))
+
+for n in numbers:
+    if n % 2 == 0:
+        print("even")
+    else:
+        print("odd")
+✨ 마무리 | BASIC 문법 정리
+
+이 16문항은 파이썬 기초 문법의 핵심 요소를 모두 포함합니다.
+
+문자열 분리
+
+형변환 (int, float, bool)
+
+산술 연산
+
+거듭제곱 연산
+
+논리 연산 (and, or, not, XOR)
+
+조건문
+
+반복 처리
+
+이 문제들을 정확하게 이해하면
+중급 알고리즘, 데이터 처리, 로봇 제어 코드까지
+탄탄한 기반 위에서 확장할 수 있습니다.
