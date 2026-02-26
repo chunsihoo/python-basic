@@ -1848,7 +1848,7 @@ map, filter, reduce, sorted, max, min 함수는
 # 🐍 python-basic
 
 > Python 기초 문법 정리 프로젝트  
-> Seoul Robotics High School - Grade 1  
+> Seoul Robot High School - Grade 1  
 
 ---
 
@@ -2327,6 +2327,8 @@ print(num + 10)
 
 15
 
+---
+
 ### 2️⃣ 형변환 (Type Casting)
 
 형변환은 데이터의 자료형(Type)을 다른 형태로 바꾸는 과정이다.  
@@ -2346,6 +2348,8 @@ print(num + 5)
 출력 →
 
 15
+
+---
 
 ### 3️⃣ 문자열 처리 (String Handling)
 
@@ -2367,6 +2371,8 @@ print(words)
 출력 →
 
 ['apple', 'banana', 'orange']
+
+---
 
 ### 4️⃣ 산술 연산 (Arithmetic Operators)
 
@@ -2401,6 +2407,8 @@ print(a / b)
 3
 10
 2.5
+
+---
 
 ### 5️⃣ 논리 연산 (Logical Operators)
 
@@ -2478,6 +2486,8 @@ print(True == False)
 True
 False
 
+---
+
 ### 6️⃣ 조건문 (Conditional Statement)
 
 조건문은 특정 조건이 참(True)인지 거짓(False)인지에 따라  
@@ -2527,6 +2537,8 @@ else:
     print("C")
 
 elif → 여러 조건을 순차적으로 검사할 때 사용
+
+---
 
 ### 7️⃣ 반복문 (for)
 
