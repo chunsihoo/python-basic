@@ -1878,7 +1878,6 @@ map, filter, reduce, sorted, max, min 함수는
 time = input()
 print(time.split(":")[1])
 
----
 
 ## ✅ Question 02. 정수 1개 입력받아 부호 바꾸기
 
