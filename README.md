@@ -1844,7 +1844,7 @@ map, filter, reduce, sorted, max, min 함수는
 
 ---
 
-# 🐍 python-basic
+# 🐍 python-basic - 입력과 출력 정리
 
 > Python 기초 문법 정리 프로젝트  
 > Seoul Robot High School - Grade 1  
