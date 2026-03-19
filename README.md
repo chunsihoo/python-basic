@@ -2639,3 +2639,360 @@ print(78)
 
 ---
 
+---
+# 🐍 python-basic
+
+> Python 기초 문법 정리 프로젝트  
+> Seoul Robot High School - Grade 1  
+
+---
+
+# 📘 Chapter 2. 자료형 (Type)
+
+---
+
+## 📌 1. 변수 (Variable)
+
+### ✔ 개념
+파이썬에서 `=` 는 **할당 연산자**로,  
+오른쪽 값을 왼쪽 변수에 저장하는 의미이다.
+
+```python
+num = 15
+x = "사과"
+y = "오렌지"
+```
+
+---
+
+## 📌 변수명 규칙
+
+- 키워드는 사용할 수 없음  
+- 공백 사용 불가  
+- 숫자로 시작 불가  
+- 특수문자 사용 불가  
+- 대소문자 구분  
+
+### ✔ 예시
+
+❌ 잘못된 변수명
+- `2you`
+- `try`
+- `plus+minus`
+
+✅ 올바른 변수명
+- `score`
+- `number`
+- `to_day`
+
+---
+
+# 📊 2. 기본 자료형
+
+## 📌 자료형 종류
+
+| 유형 | 설명 | 예시 |
+|------|------|------|
+| int | 정수형 | 1, 100, -5 |
+| float | 실수형 | 3.14, -2.5 |
+| str | 문자열 | "hello" |
+| bool | 논리형 | True, False |
+
+---
+
+## 📌 타입 확인
+
+```python
+print(type("안녕하세요"))
+print(type(273))
+print(type(3.14))
+```
+
+### 📤 출력 결과
+```
+<class 'str'>
+<class 'int'>
+<class 'float'>
+```
+
+---
+
+## 📌 타입은 값에 의해 결정됨
+
+```python
+score = 100
+print(type(score))
+```
+
+➡ 결과
+```
+<class 'int'>
+```
+
+```python
+score = "high"
+print(type(score))
+```
+
+➡ 결과
+```
+<class 'str'>
+```
+
+---
+
+# 🔢 3. 정수형 (int)
+
+```python
+num = 123456789
+print(num)
+print(type(num))
+```
+
+➡ 출력
+```
+123456789
+<class 'int'>
+```
+
+---
+
+# 🔢 4. 실수형 (float)
+
+```python
+a = 1.5
+b = -3.5
+
+print(a, b)
+print(type(a), type(b))
+```
+
+➡ 출력
+```
+1.5 -3.5
+<class 'float'> <class 'float'>
+```
+
+---
+
+# 🔤 5. 문자열 (String)
+
+### ✔ 특징
+- 따옴표로 감싸서 표현
+- 한글, 영어, 숫자 모두 가능
+
+```python
+print("KOREA")
+print("안녕하세요")
+```
+
+---
+
+## ⚠ 문자열 따옴표 규칙
+
+❌ 오류 발생
+```python
+"I say "help""
+```
+
+✅ 정상 출력
+```python
+"I say 'help'"
+```
+
+---
+
+# 🔘 6. 논리형 (Boolean)
+
+```python
+a = 5
+b = (a == 5)
+
+print(b)
+```
+
+➡ 출력
+```
+True
+```
+
+---
+
+## ✔ 조건문 예시
+
+```python
+a = 5
+
+if a == 5:
+    print("a는 5")
+```
+
+➡ 출력
+```
+a는 5
+```
+
+---
+
+# 🔄 7. 타입 변환 (Type Casting)
+
+## 📌 기본 함수
+
+- `int()` → 정수 변환  
+- `float()` → 실수 변환  
+- `str()` → 문자열 변환  
+
+---
+
+## ✔ 문자열 → 정수
+
+```python
+a = input()
+b = input()
+
+c = int(a) + int(b)
+print(c)
+```
+
+➡ 입력: 5, 8  
+➡ 출력:
+```
+13
+```
+
+---
+
+## ❌ 변환 없이 계산
+
+```python
+a = input()
+b = input()
+
+print(a + b)
+```
+
+➡ 출력:
+```
+58
+```
+
+---
+
+# 📏 단위 변환 예제
+
+## ✔ inch → cm
+
+```python
+inch = float(input())
+cm = inch * 2.54
+
+print(cm)
+```
+
+---
+
+# ⚪ 원의 둘레와 넓이
+
+```python
+r = int(input())
+
+length = 2 * 3.14 * r
+area = 3.14 * r * r
+
+print(length, area)
+```
+
+---
+
+# 📦 실생활 문제
+
+## ✔ 책 가격 계산
+
+```python
+book = int(input())
+discount = float(input())
+delivery = int(input())
+
+total = book - (book * discount / 100) + delivery
+
+print(total)
+```
+
+---
+
+## ✔ 점수 평균 계산
+
+```python
+score1 = int(input())
+score2 = int(input())
+
+sum = score1 + score2
+avg = sum / 2
+
+print(sum, avg)
+```
+
+---
+
+## ✔ 삼각형 넓이
+
+```python
+w = int(input())
+h = int(input())
+
+area = w * h / 2
+
+print(area)
+```
+
+---
+
+## ✔ kg → pound 변환
+
+```python
+kg = float(input())
+pound = kg * 2.2046
+
+print(pound)
+```
+
+---
+
+# 📈 성장 계획 프로그램
+
+```python
+now = int(input())
+goal = int(input())
+
+cm = (goal - now) / 5
+
+print(cm)
+```
+
+---
+
+# ✨ 마무리
+
+## 📌 핵심 정리
+
+- 변수는 값을 저장하는 공간이다
+- 자료형은 데이터의 종류를 의미한다
+- `type()`으로 타입을 확인할 수 있다
+- 형변환은 반드시 필요한 개념이다
+
+---
+
+## 🧠 배운 핵심
+
+- 변수 선언과 사용
+- 자료형 (int, float, str, bool)
+- 타입 확인 (`type`)
+- 형변환 (`int`, `float`, `str`)
+- 실생활 계산 프로그램 구현
+
+---
+
+## 🚀 한줄 정리
+
+> 파이썬의 자료형과 형변환을 이해하면  
+> **데이터 처리와 알고리즘의 기초가 완성된다.**
